@@ -1,5 +1,53 @@
+@import './modules/variables';
+@import './modules/mixins';
 img {
     max-width: 100%;
+}
+
+figure {
+    position: relative;
+    max-height: 100%;
+    margin: 0px;
+    figcaption {
+        padding: $large-padding;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 2em;
+        position: absolute;
+        width: auto;
+        bottom: 0px;
+        left: 10px;
+        z-index: 10;
+        @include text-center;
+        color: rgba($black, 0.5);
+    }
+    // &:hover{
+    //     // hace referencia el selector en donde entre dentro 
+    // }
+}
+
+.btn {
+    padding: $large-padding;
+    position: relative;
+    color: $black !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+    &:before {
+        content: '';
+        position: absolute;
+        background-color: $light-blue;
+        width: 100%;
+        height: 40%;
+        bottom: 0px;
+        z-index: -1;
+        left: 0px;
+        transition: all 0.15s ease-out;
+    }
+    &:hover::before {
+        height: 100%;
+    }
 }
 
 .grid {
@@ -23,6 +71,7 @@ img {
 
 .container {
     grid-column: span 12;
+    padding: $big-padding;
 }
 
 @media(min-width: 960px) {
