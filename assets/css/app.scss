@@ -1,5 +1,13 @@
 @import './modules/variables';
 @import './modules/mixins';
+@import url('https://fonts.googleapis.com/css?family=Supermercado+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Supermercado+One&display=swap');
+// font-family: 'Supermercado One', cursive;
+// font-family: 'Source Sans Pro', sans-serif;
+body {
+    margin: 0;
+}
+
 img {
     max-width: 100%;
 }
@@ -9,17 +17,7 @@ figure {
     max-height: 100%;
     margin: 0px;
     figcaption {
-        padding: $large-padding;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 2em;
-        position: absolute;
-        width: auto;
-        bottom: 0px;
-        left: 10px;
-        z-index: 10;
-        @include text-center;
-        color: rgba($black, 0.5);
+        @include caption;
     }
     // &:hover{
     //     // hace referencia el selector en donde entre dentro 
@@ -55,23 +53,63 @@ figure {
     grid-template-columns: repeat(12, 1fr);
 }
 
-.main-text {
-    grid-area: title;
-}
-
-.main-img {
-    grid-area: image;
-}
-
 .grid-main-area {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
+    margin-top: $big-margin-top;
+    margin-bottom: $big-margin-top;
     grid-template-areas: "title title title title title title title title title" "image image image image image image image image image";
+    .text {
+        grid-area: title;
+        font-size: 1.2em;
+        line-height: 1.5em;
+        p {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 200;
+        }
+        h1 {
+            font-family: 'Supermercado One', cursive;
+            font-size: $big;
+            font-weight: inherit;
+            letter-spacing: 0.3em;
+            line-height: 1.5em;
+        }
+    }
+    .img {
+        grid-area: image;
+    }
 }
 
 .container {
     grid-column: span 12;
     padding: $big-padding;
+}
+
+.cover {
+    @include absolute-cover;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    &.parallax {
+        background-attachment: fixed;
+        background-image: url(../../public/images/img2.jpg);
+        position: relative;
+        p {
+            @include caption;
+            background-color: rgba($white, 0.8);
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            left: 0px;
+            @include text-right;
+            span {
+                display: block;
+                font-size: 0.5em;
+                font-weight: 200;
+                margin-top: 5px;
+            }
+        }
+    }
 }
 
 @media(min-width: 960px) {
