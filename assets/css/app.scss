@@ -105,6 +105,11 @@ figure {
 }
 
 .slider {
+    .img {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
     header {
         background-color: $blue;
         color: white;
@@ -113,9 +118,40 @@ figure {
         width: 90%;
         box-sizing: border-box;
         margin: 0 auto;
+        z-index: 10;
+        position: relative;
         h2 {
             margin: 0px;
         }
+        .separator {
+            text-align: right;
+            padding: 40px;
+            position: relative;
+            &::after {
+                position: absolute;
+                content: '';
+                height: 3px;
+                width: 140px;
+                background-color: white;
+                top: .7em;
+                right: 0px;
+            }
+        }
+    }
+}
+
+#slider-text-contnet {
+    @include transition;
+    &.hide {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+#slider-img {
+    @include transition;
+    &.hide {
+        opacity: 0p;
     }
 }
 
@@ -133,15 +169,6 @@ figure {
             &:nth-of-type(1) {
                 margin-bottom: 3em;
                 position: relative;
-                // &::after {
-                //     content: '';
-                //     background-color: $black;
-                //     position: absolute;
-                //     bottom: -1.5em;
-                //     height: 5px;
-                //     width: 70%;
-                //     z-index: -1;
-                // }
             }
         }
     }

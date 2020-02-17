@@ -54,3 +54,7 @@
         line-height: 1.5em;
     }
 }
+
+@mixin transition {
+    transition: all 0.6 ease-out;
+}
